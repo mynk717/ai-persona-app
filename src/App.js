@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from "react";
-import "./App.css";
 import { personaConfig, colors } from "./config";
 import PersonaSelector from "./components/PersonaSelector";
 import MessageBubble from "./components/MessageBubble";
