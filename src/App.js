@@ -2,14 +2,14 @@ import React, { useState, useRef, useEffect } from "react";
 import { personaConfig, colors } from "./config";
 import PersonaSelector from "./components/PersonaSelector";
 import MessageBubble from "./components/MessageBubble";
-import { useGeminiApi } from "./hooks/useGeminiApi";
+import { useOpenAIApi } from "./hooks/useOpenAIApi";
 
 const App = () => {
   const [selectedPersona, setSelectedPersona] = useState("hitesh");
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const chatDisplayRef = useRef(null);
-  const { generateResponse, isLoading, error } = useGeminiApi();
+  const { generateResponse, isLoading, error } = useOpenAIApi();
 
   // Auto-scroll to the latest message
   useEffect(() => {
