@@ -18,21 +18,24 @@ export const useGeminiApi = () => {
       return null;
     }
 
-    // Using a guaranteed public model to avoid 404 errors
     const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${API_KEY}`;
 
-    const fullPrompt = [
-      {
-        role: "user",
-        parts: [{ text: promptGuidance + `\n\nUser: ${userMessage}` }],
-      },
-    ];
+    // The API expects a simple, clean payload.
+    // The model's persona is already configured by the system prompt, so we just send the user's message.
+    const fullPrompt = {
+      contents: [
+        {
+          role: "user",
+          parts: [{ text: userMessage }],
+        },
+      ],
+    };
 
     try {
       const response = await fetch(API_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ contents: fullPrompt }),
+        body: JSON.stringify(fullPrompt),
       });
 
       if (!response.ok) {
