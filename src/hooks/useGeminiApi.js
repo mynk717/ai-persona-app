@@ -18,8 +18,7 @@ export const useGeminiApi = () => {
       return null;
     }
 
-    const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${API_KEY}`;
-
+    const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
     // The API expects a simple, clean payload.
     // The model's persona is already configured by the system prompt, so we just send the user's message.
     const fullPrompt = {
