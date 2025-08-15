@@ -18,7 +18,8 @@ export const useGeminiApi = () => {
       return null;
     }
 
-    const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${API_KEY}`;
+    // Using a guaranteed public model to avoid 404 errors
+    const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${API_KEY}`;
 
     const fullPrompt = [
       {
